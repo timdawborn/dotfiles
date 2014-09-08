@@ -1,0 +1,60 @@
+URxvt*background: black
+URxvt*transparent: true
+URxvt*shading: 25
+URxvt*tint: blue
+URxvt*inheritPixmap: true
+
+URxvt*foreground: white
+URxvt*pointerColor: red
+URxvt*pointerColorBackground: black
+URxvt*cursorColor: white
+URxvt*internalBorder: 3
+URxvt*loginShell: true
+URxvt*scrollBar: true
+URxvt*scrollBar_right: true
+URxvt*scrollKey: true
+URxvt*saveLines: 1000
+URxvt*multiClickTime: 250
+
+
+*customization: -color
+XTerm*termName: xterm-256color
+XTerm*faceName: Source Code Pro:size=13
+XTerm*foreground: white
+XTerm*internalBorder: 3
+XTerm*pointerColor: red
+XTerm*pointerColorBackground: black
+XTerm*scrollBar: true
+XTerm*rightScrollBar: true
+XTerm*saveLines: 1000
+XTerm*showMissingGlyphs: true
+XTerm*utf8: 1
+XTerm*wideFont: -*-fixed-medium-r-*-*-15-*-*-*-*-*-iso10646-1
+
+
+aterm*font: -*-fixed-medium-r-*-*-15-*-*-*-*-*-iso8859-*
+aterm*font1: -*-*-*-*-*-*-2-*-*-*-*-*-*-*
+aterm*font2: -misc-fixed-*-r-normal-*-8-*-*-*-*-*-iso8859-*
+aterm*font3: -b&h-lucidatypewriter-bold-*-*-*-15-*-*-*-*-*-*-*
+aterm*font4: -*-screen-bold-r-normal-*-15-*-*-*-*-*-iso8859-*
+aterm*font5: -*-lucidatypewriter-medium-*-*-*-15-*-*-*-*-*-*-*
+aterm*font6: -*-lucidatypewriter-medium-*-*-*-15-*-*-*-*-*-*-*
+aterm*font7: -dec-terminal-bold-r-normal-*-15-*-*-*-*-*-iso8859-*
+
+aterm*background: black
+aterm*transparent: true
+aterm*shading: 25
+aterm*tint: blue
+aterm*inheritPixmap: true
+
+aterm*foreground: white
+aterm*pointerColor: red
+aterm*pointerColorBackground: black
+aterm*cursorColor: white
+aterm*internalBorder: 3
+aterm*loginShell: true
+aterm*scrollBar: true
+aterm*scrollBar_right: true
+aterm*scrollKey: true
+aterm*saveLines: 1000
+aterm*multiClickTime: 250
