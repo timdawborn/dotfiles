@@ -59,8 +59,9 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'Lokaltog/powerline'
+" NeoBundle 'Lokaltog/powerline'
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
@@ -132,8 +133,10 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " Powerline
-let g:Powerline_symbols='fancy'
+" let g:Powerline_symbols='fancy'
 set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'

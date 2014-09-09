@@ -1,0 +1,9 @@
+/.neobundle/
+/ctrlp.vim/
+/nerdcommenter/
+/powerline/
+/syntastic/
+/vim-airline/
+/vim-colors-solarized/
+/vim-fugitive/
+/vim-mustache-handlebars/
