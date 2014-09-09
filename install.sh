@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# Ensure NeoBundle exists.
 cd $(dirname ${0})
 HERE=$(pwd)
+
+# Ensure NeoBundle exists.
 if ! $(git submodule status | grep -q neobundle); then
   git submodule init
+  git subdmodule update
 fi
 
 # Create the directories if they don't already exist.
@@ -31,7 +33,6 @@ for f in $(find ${HERE} -maxdepth 1 -mindepth 1 -type f); do
     continue
   fi
 
-  unlink ${f}
   [ ! -r $(basename ${f}) ] && ln -s ${HERE}/${f}
 done
 popd > /dev/null
