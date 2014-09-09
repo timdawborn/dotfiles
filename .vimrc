@@ -61,7 +61,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
-" NeoBundle 'Lokaltog/powerline'
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
@@ -114,7 +113,7 @@ nmap <C-c> <plug>NERDCommenterToggle<CR>
 vmap <C-c> <plug>NERDCommenterToggle<CR>
 
 " Syntastic
-let g:syntastic_python_checker_args = '--ignore=E111,E221,E226,E501'
+let g:syntastic_python_flake8_args = ' --ignore=E111,E221,E226,E501 '
 let g:syntastic_cpp_include_dirs = ['src/include']
 let g:syntastic_cpp_compiler_options = ' -W -Wall -Wextra -pedantic std=c++11 '
 let g:syntastic_check_on_open=1
@@ -132,8 +131,7 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-" Powerline
-" let g:Powerline_symbols='fancy'
+" airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
