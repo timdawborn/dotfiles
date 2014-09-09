@@ -74,6 +74,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
@@ -144,6 +145,9 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']  " Make Ctrl-P plugin a lot faster for Git projects
+
+" LaTeX-Box
+let g:LatexBox_custom_indent=0
 
 " NERDcommenter
 nmap <C-c> <plug>NERDCommenterToggle<CR>
