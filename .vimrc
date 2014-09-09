@@ -4,22 +4,20 @@ filetype on
 filetype indent on
 filetype plugin on
 set encoding=utf-8
-set modeline
-set modelines=1
 set nocompatible
 
 " General
-let g:netrw_dirhistmax=0  " disable netrw history
-set autoindent
-set bs=2  " backspace should work across lines
+let g:netrw_dirhistmax=0  " Disable netrw history
+set bs=2  " Backspace should work across lines
 set completeopt=menuone,menu,longest,preview
 set hidden
-set hlsearch
-set incsearch
-set linebreak " wrap lines at convenient locations
+set linebreak  " Wrap lines at convenient locations
 set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮
+set history=1000  " Number of commands that are remembered
 set magic
+set modeline
+set modelines=1
 set novisualbell
 set number
 set ruler
@@ -29,26 +27,41 @@ set smartindent
 set splitbelow
 set splitright
 set t_Co=256
+set tabpagemax=50  " Maximum number of pages `vim -p` can open
 set title
 set ttyfast
 set tw=0
+set undolevels=1000  " Undo history size
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.o,*.pyc,*.class,*.so           " compiled files
-set wildignore+=ve/**                            " virtualenv folders
+set wildignore+=ve/**,ve-*/**                    " virtualenv folders
 set wildignore+=__pycache__                      " Python 3
 set wildignore+=.*.sw[opq]                       " vim swap files
 set wildmenu
 set wildmode=list:longest
 
 " Indentation
+set autoindent
 set backspace=indent,eol,start
 set expandtab
 set smarttab
 set softtabstop=2
-set sw=2
+set shiftwidth=2
 set tabstop=2
+
+" Searching
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+nnoremap * *<c-o>  " Don't move on *
+nmap <Leader>q :nohlsearch<CR>  " Disable search highlighting
+
+" Scrolling
+set scrolloff=5      " Start scrolling slightly before the cursor reaches an edge
+set sidescrolloff=5
 
 " Setup NeoBundle
 if has('vim_starting')
@@ -72,16 +85,11 @@ NeoBundleCheck
 " Following taken from http://items.sjbach.com/319/configuring-vim-right
 runtime macros/matchit.vim
 
-" Searching
-set ignorecase
-set smartcase
-nnoremap * *<c-o> " Don't move on *
-
 " Cursor moves through visual lines, not real lines
 map <Up> gk
 map <Down> gj
 
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+" Highlight unwanted spaces at the end of lines (http://vim.wikia.com/wiki/Highlight_unwanted_spaces)
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -90,51 +98,13 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Clean whitespace
-map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
+map <Leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
 
-" C++11
-autocmd BufNewFile,BufRead *.h,*.hpp,*.hh,*.hxx,*.cc*,.cpp,*.cxx set syntax=cpp11
-" LESS CSS
-autocmd BufNewFile,BufRead *.less set filetype=less
-" Ragel
-autocmd BufNewFile,BufRead *.rl set syntax=ragel
-
-" Colour scheme
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-colorscheme solarized
-
-" NERDcommenter
-nmap <C-c> <plug>NERDCommenterToggle<CR>
-vmap <C-c> <plug>NERDCommenterToggle<CR>
-
-" Syntastic
-let g:syntastic_python_flake8_args = ' --ignore=E111,E221,E226,E501 '
-let g:syntastic_cpp_include_dirs = ['src/include']
-let g:syntastic_cpp_compiler_options = ' -W -Wall -Wextra -pedantic std=c++11 '
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-set statusline+=%{fugitive#statusline()}
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" ctrlp
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|ve$\|ve-\|doc/html',
-  \ 'file': '\.o$\|\.so$\|\.dll$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-
-" airline
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+" Syntax highlighting
+autocmd BufNewFile,BufRead *.h,*.hpp,*.hh,*.hxx,*.cc*,.cpp,*.cxx set syntax=cpp11  " C++11
+autocmd BufNewFile,BufRead *.less set filetype=less  " LESS CSS
+autocmd BufRead,BufNewFile *.md set filetype=markdown  " Markdown
+autocmd BufNewFile,BufRead *.rl set syntax=ragel  " Ragel
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -154,3 +124,43 @@ nmap ,i :e <C-R>=substitute(expand("%"), pattern, "_impl.h", "")<CR><CR>
 nmap ,u :e <C-R>=substitute(expand("%"), pattern, "_test.", "") . substitute(expand("%:e"), "h", "cc", "")<CR><CR>
 nmap ,p :e <C-R>=substitute(expand("%"), pattern, ".py", "")<CR><CR>
 nmap ,j :e <C-R>=substitute(expand("%"), pattern, ".js", "")<CR><CR>
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
+set laststatus=2
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set statusline+=%{fugitive#statusline()}
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" Ctrl-P
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|ve$\|ve-\|doc/html',
+  \ 'file': '\.o$\|\.so$\|\.dll$',
+  \ }
+let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']  " Make Ctrl-P plugin a lot faster for Git projects
+
+" NERDcommenter
+nmap <C-c> <plug>NERDCommenterToggle<CR>
+vmap <C-c> <plug>NERDCommenterToggle<CR>
+
+" Solarized
+set background=dark
+let g:solarized_contrast='high'
+let g:solarized_termcolors=256
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_visibility='high'
+colorscheme solarized
+
+" Syntastic
+let g:syntastic_check_on_open=1
+let g:syntastic_cpp_compiler_options = ' -W -Wall -Wextra -pedantic std=c++11 '
+let g:syntastic_cpp_include_dirs = ['src/include']
+let g:syntastic_enable_signs=1
+let g:syntastic_python_flake8_args = ' --ignore=E111,E221,E226,E501 '
