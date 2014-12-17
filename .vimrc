@@ -90,14 +90,6 @@ runtime macros/matchit.vim
 map <Up> gk
 map <Down> gj
 
-" Highlight unwanted spaces at the end of lines (http://vim.wikia.com/wiki/Highlight_unwanted_spaces)
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
 " Clean whitespace
 map <Leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
 
@@ -163,8 +155,18 @@ let g:solarized_visibility='high'
 colorscheme solarized
 
 " Syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_cpp_compiler_options = ' -W -Wall -Wextra -pedantic std=c++11 '
-let g:syntastic_cpp_include_dirs = ['src/include']
-let g:syntastic_enable_signs=1
+let g:syntastic_check_on_open = 1
+let g:syntastic_cpp_compiler_options = '-W -Wall -Wextra -pedantic -std=c++11'
+let g:syntastic_cpp_include_dirs = ['src/include', 'src/lib']
+let g:syntastic_enable_signs = 1
 let g:syntastic_python_flake8_args = ' --ignore=E111,E221,E226,E501 '
+let g:syntastic_tex_checkers = ['chktex']
+let g:syntastic_tex_chktex_args = '-l ~/.chktexrc'
+
+" Highlight unwanted spaces at the end of lines (http://vim.wikia.com/wiki/Highlight_unwanted_spaces)
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()

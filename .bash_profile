@@ -65,7 +65,8 @@ case "$(uname)" in
 Darwin)
   alias ls='ls -pG'
   alias top='top -ocpu -Otime'
-  export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home"
+  export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+  pathprepend "${JAVA_HOME}/bin" PATH
   export LSCOLORS="exFxcxdxbxegedabagacad"
   export ARCHFLAGS="-arch x86_64"
   ;;
