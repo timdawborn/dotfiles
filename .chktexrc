@@ -1,2 +1,110 @@
-# Exclude these environments from syntax checking.
-VerbEnvir { lstlisting pgfpicture tikzpicture }
+#####################################################################
+# These  commands  should be ignored when detecting whether a command
+# is ended by a space.
+#
+Silent
+{
+  \makeglossary \LaTeX \printglossary
+
+  \rm \em \bf \it \sl \sf \sc \tt \selectfont
+  \rmfamily \sffamily \ttfamily \mdseries \bfseries
+  \slshape \scshape \relax
+  \vskip \pagebreak \nopagebreak
+
+  \textrm \textem \textbf \textit \textsl \textsf \textsc \texttt
+
+  \clearpage \ddots \dotfill \flushbottom \fussy \indent \linebreak
+  \onecolumn \pagebreak \pushtabs \poptabs \scriptsize \sloppy
+  \twocolumn \vdots
+  \today \kill \newline \thicklines \thinlines
+
+  \columnsep \space \item \tiny \footnotesize \small \normalsize
+  \normal \large \Large \LARGE \huge \Huge \printindex
+
+  \newpage \listoffigures \listoftables \tableofcontents
+  \maketitle \makeindex
+
+  \hline \hrule \vrule
+
+  \centering
+
+  \bigskip \medskip \smallskip
+
+  \noindent \expandafter
+
+  \makeatletter \makeatother
+
+  \columnseprule
+
+  \textwidth \textheight \hsize \vsize
+
+  \if \fi
+
+  \csname \endcsname
+
+  \z@ \p@ \@warning \typeout
+
+  \dots \ldots \input \endinput \nextline \leavevmode \cdots \appendix \listfiles \and \quad
+  \vfill \vfil \hfill \hfil \topmargin \oddsidemargin
+  \frenchspacing \nonfrenchspacing
+  \begingroup \endgroup \par
+
+  \vrefwarning \upshape \headheight \headsep \hoffset \voffset
+  \cdot \qquad
+  \left \right
+}
+
+
+#####################################################################
+# This  keyword  indicates commands  which argument isn't LaTeX code,
+# and which thus should be ignored.
+#
+# After the  command,  you  may place arguments  that  you  wish that
+# should be  wiped in the process;  use [] for optional arguments, {}
+# for required  ones and *  if the  command  supports  an alternative
+# variant. These should be separated from the command with a colon.
+#
+# For  instance,  if  you would like to wipe the \newcommand command,
+# you would declare it as \newcommand:*[][]{}
+#
+# These  commands may be "executed" before they're wiped, so you will
+# typically also wish to list filehandling commands and similar here.
+#
+WipeArg
+{
+  \label:{} \ref:{} \vref:{} \pageref:{} \index:{} \cite:[]{}
+  \input:{} \verbatiminput:[]{} \listinginput:[]{}{}
+  \verbatimtabinput:[]{} \include:{} \includeonly:{}
+  \bibitem:[]{}
+  \li:{} \lstinline:*[]{} \includegraphics:*[]{}
+  \EGbnf:*[]{}
+}
+
+
+#####################################################################
+# These  environments  contains  material  which  will  be typeset as
+# mathematics by LaTeX.  This turns on/off some warnings.
+#
+# We will automagically append a * to each keyword.
+#
+MathEnvir
+{
+    displaymath math eqnarray array equation
+}
+
+
+
+#####################################################################
+#
+# These  environments  contains  material  which  contents  should be
+# ignored.
+#
+# We will automagically append a * to each keyword.
+#
+VerbEnvir
+{
+  verbatim comment listing verbatimtab rawhtml errexam picture texdraw
+  li lstinline lstlisting
+  pgfpicture tikzpicture
+  EGbnf
+}
