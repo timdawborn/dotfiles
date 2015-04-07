@@ -6,7 +6,7 @@ HERE=$(pwd)
 # Ensure NeoBundle exists.
 if ! $(git submodule status | grep -q neobundle); then
   git submodule init
-  git subdmodule update
+  git submodule update
 fi
 
 # Create the directories if they don't already exist.
