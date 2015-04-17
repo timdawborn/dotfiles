@@ -2,6 +2,7 @@ import atexit
 import os
 import readline
 import rlcompleter
+import sys
 
 default_completer = rlcompleter.Completer(locals())
 
@@ -28,7 +29,7 @@ if 'libedit' in readline.__doc__:
 else:
   readline.parse_and_bind('tab: complete')
 
-if os.path.exists(histfile):
+if os.path.exists(histfile) and sys.version_info.major == 3:
   readline.read_history_file(histfile)
 
 atexit.register(save_history)
