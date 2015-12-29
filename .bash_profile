@@ -44,7 +44,7 @@ function pathappend {
 # =============================================================================
 # =============================================================================
 # Add additional paths to PATH.
-for p in /usr/local/bin /usr/local/sbin /usr/local/share/npm/bin ${HOME}/bin /usr/local/texlive/2014/bin/x86_64-darwin ${HOME}/.rvm/bin; do
+for p in /usr/local/bin /usr/local/sbin /usr/local/share/npm/bin ${HOME}/bin /usr/local/texlive/2014/bin/x86_64-darwin ${HOME}/.rvm/bin ${HOME}/repos/llvm/tools/clang/tools/scan-build ${HOME}/repos/llvm/tools/clang/tools/scan-view; do
   [ -r ${p} ] && pathprepend ${p} PATH
 done
 
