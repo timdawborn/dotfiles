@@ -156,6 +156,7 @@ colorscheme solarized
 
 " Syntastic
 let g:syntastic_check_on_open = 1
+let g:syntastic_c_compiler_options = '-W -Wall -Wextra -pedantic -I/opt/postgresql-9.5.grok/include -std=c11 -D_POSIX_SOURCE -D_POSIX_C_SOURCE=200112L -D_BSD_SOURCE -D_XOPEN_SOURCE=700'
 let g:syntastic_cpp_compiler_options = '-W -Wall -Wextra -pedantic -std=c++11'
 let g:syntastic_cpp_include_dirs = ['src/include', 'src/lib']
 let g:syntastic_enable_signs = 1
