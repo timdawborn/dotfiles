@@ -160,7 +160,7 @@ let g:syntastic_c_compiler_options = '-W -Wall -Wextra -pedantic -I/opt/postgres
 let g:syntastic_cpp_compiler_options = '-W -Wall -Wextra -pedantic -std=c++11'
 let g:syntastic_cpp_include_dirs = ['src/include', 'src/lib']
 let g:syntastic_enable_signs = 1
-let g:syntastic_python_flake8_args = ' --ignore=E111,E114,E221,E226,E501 '
+let g:syntastic_python_flake8_args = ' --ignore=E111,E114,E221,E226,E501,E731 '
 let g:syntastic_tex_checkers = ['chktex']
 let g:syntastic_tex_chktex_args = '-l ~/.chktexrc'
 
