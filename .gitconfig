@@ -1,11 +1,12 @@
+[user]
+  name = Tim Dawborn
+  email = tim.dawborn@gmail.com
+  signingkey = 46649CF6
+
 [color]
   diff = auto
   status = auto
   branch = auto
-
-[user]
-  name = Tim Dawborn
-  email = tim.dawborn@gmail.com
 
 [alias]
   st = status
@@ -21,3 +22,6 @@
 
 [diff]
   algorithm = patience
+
+[commit]
+  gpgsign = true
