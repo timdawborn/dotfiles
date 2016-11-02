@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+import random
+import sys
+import string
+
+CHOICES = tuple(set(string.ascii_letters + string.digits + string.punctuation) - set('''lIoO1"'&$'''))
+
+if len(sys.argv) > 1 and sys.argv[1].isdigit():
+  length = int(sys.argv[1])
+else:
+  length = 16
+print(''.join(random.choice(CHOICES) for _ in range(length)))
