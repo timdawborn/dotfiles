@@ -1,7 +1,7 @@
 [user]
   name = Tim Dawborn
   email = tim.dawborn@gmail.com
-  signingkey = 46649CF6
+  signingkey = 1ABEE16D46649CF6
 
 [color]
   diff = auto
@@ -12,6 +12,7 @@
   st = status
   co = checkout
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  pushu = !git push -u origin `git symbolic-ref --short HEAD`
   undo = reset --soft HEAD^
 
 [merge]
