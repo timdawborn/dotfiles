@@ -118,6 +118,15 @@ nmap ,u :e <C-R>=substitute(expand("%"), pattern, "_test.", "") . substitute(exp
 nmap ,p :e <C-R>=substitute(expand("%"), pattern, ".py", "")<CR><CR>
 nmap ,j :e <C-R>=substitute(expand("%"), pattern, ".js", "")<CR><CR>
 
+" clang-format
+map <C-K> ggVG :py3f /home/ubuntu/bin/clang-format.py<cr>
+imap <C-K> <c-o>:py3f /home/ubuntu/bin/clang-format.py<cr>
+function! Formatonsave()
+  let l:formatdiff = 1
+  py3f /home/ubuntu/bin/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.c,*.cc,*.cpp call Formatonsave()
+
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
