@@ -82,6 +82,8 @@ alias grep='grep --color'
 alias l='ll'
 alias less='less -R'
 alias ll='ls -lahF'
+alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
 
 # Environment veriables.
 export EDITOR='vim'

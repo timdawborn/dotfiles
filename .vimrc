@@ -75,10 +75,12 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'vim-python/python-syntax'
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
@@ -154,6 +156,14 @@ let g:LatexBox_custom_indent=0
 nmap <C-c> <plug>NERDCommenterToggle<CR>
 vmap <C-c> <plug>NERDCommenterToggle<CR>
 
+" Python
+let g:python_version_2 = 0
+let g:python_highlight_builtins = 1
+let g:python_highlight_exceptions = 1
+let g:python_highlight_string_formatting = 1
+let g:python_highlight_string_format = 1
+let g:python_highlight_class_vars = 1
+
 " Solarized
 set background=dark
 let g:solarized_contrast='high'
@@ -175,7 +185,7 @@ let g:syntastic_c_compiler_options = '-W -Wall -Wextra -pedantic -I/opt/postgres
 let g:syntastic_cpp_compiler_options = '-W -Wall -Wextra -pedantic -std=c++11 -I/usr/include/python3.5m'
 let g:syntastic_cpp_include_dirs = ['src/include', 'src/lib']
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_python_flake8_args = ' --ignore=E111,E114,E221,E226,E402,E501,E731 '
+let g:syntastic_python_flake8_args = ' --ignore=E111,E114,E221,E226,E265,E402,E501,E731 '
 let g:syntastic_tex_checkers = ['chktex']
 let g:syntastic_tex_chktex_args = '-l ~/.chktexrc'
 
