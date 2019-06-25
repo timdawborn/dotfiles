@@ -186,8 +186,8 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_c_compiler_options = '-W -Wall -Wextra -pedantic -I/opt/postgresql-9.5.grok/include -I/usr/include/python3.5m -std=c11 -D_POSIX_SOURCE -D_POSIX_C_SOURCE=200112L -D_BSD_SOURCE -D_XOPEN_SOURCE=700'
 let g:syntastic_cpp_compiler_options = '-W -Wall -Wextra -pedantic -std=c++11 -I/usr/include/python3.5m'
 let g:syntastic_cpp_include_dirs = ['src/include', 'src/lib']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_python_flake8_args = ' --ignore=E111,E114,E221,E226,E265,E402,E501,E731 '
+let g:syntastic_javascript_checkers = ['npx', 'eslint']
+let g:syntastic_python_flake8_args = ' --ignore=E111,E114,E221,E226,E265,E402,E501,E731,C813,C815,C816 '
 let g:syntastic_tex_checkers = ['chktex']
 let g:syntastic_tex_chktex_args = '-l ~/.chktexrc'
 
