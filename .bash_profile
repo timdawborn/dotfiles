@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export UID="$(id -u)" GID="$(id -g)"
+
 # If not running interactively, don't do anything.
 if [ -z "${PS1}" ]; then
   return
@@ -65,7 +67,7 @@ case "$(uname)" in
 Darwin)
   alias ls='ls -pG'
   alias top='top -ocpu -Otime'
-  export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+  export JAVA_HOME="$(/usr/libexec/java_home -v 12.0)"
   pathprepend "${JAVA_HOME}/bin" PATH
   export LSCOLORS="exFxcxdxbxegedabagacad"
   export ARCHFLAGS="-arch x86_64"
@@ -92,9 +94,13 @@ export PAGER='less'
 export PYTHONSTARTUP="${HOME}/.pythonrc.py"
 export TEXINPUTS=".:${HOME}/repos/tex//:"
 
+# gpg
+export GPG_TTY=$(tty)
+
 # Bash completion.
 [ -r /etc/bash_completion ] && source /etc/bash_completion
 $(which brew > /dev/null) && [ -r $(brew --prefix)/etc/bash_completion ] && source $(brew --prefix)/etc/bash_completion
+$(which brew > /dev/null) && [ -r $(brew --prefix)/etc/bash_completion.d/git-completion.bash ] && source $(brew --prefix)/etc/bash_completion.d/git-completion.bash
 
 # Load RVM bash functions.
 [ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
